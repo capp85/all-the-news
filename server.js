@@ -39,11 +39,13 @@ app.get('/', (req, res) => {
 });
 
 
+
 app.get("/scrape", function(req, res) {
  
   axios.get("https://www.npr.org/sections/news/").then(function(response) {
    
     var $ = cheerio.load(response.data);
+    console.log(response.data)
 
     // Now, we grab every h2 within an article tag, and do the following:
     $("article h2").each(function(i, element) {
